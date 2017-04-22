@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from './api.service';
+import { Http } from '@angular/http';
 
 @Injectable()
-export class RaceService {
-  constructor(private apiService: ApiService) {
+export class RacesService {
+  constructor(private http: Http) {
   }
   list() {
-   return this.apiService.get('/races');
+        console.log("on passe par le http");
+   return this.http.get('/api/races');
   }
 }

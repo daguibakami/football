@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RaceService } from './services/race.service';
+import { RacesService } from './services/race.service';
 
 @Component({
   selector: 'ponyracer-app',
@@ -20,7 +20,7 @@ import { RaceService } from './services/race.service';
 export class PonyRacerAppComponent {
 
   // add a constructor with RaceService
-  constructor(private raceService: RaceService) {
+  constructor(private raceService: RacesService) {
   }
   
 

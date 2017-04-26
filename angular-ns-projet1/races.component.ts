@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
   selector: 'ns-races',
   template: `
   <div *ngIf="races.length > 0; else empty"><h2>Races</h2></div>
-  <ng-template #empty><h2>No races.</h2></ng-template>
+  <ng-template #empty><p>No races.</p></ng-template>
   <button (click)="refreshRaces()">Refresh the races list</button>
   <p>{{races.length}} races</p>
 <ul>

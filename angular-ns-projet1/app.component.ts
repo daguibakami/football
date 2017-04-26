@@ -7,6 +7,12 @@ import { JsonPipe } from '@angular/common';
   template: `
   <h1>PonyRacer</h1>
 
+ <h2>chap13</h2>
+<div doNothing>Click me</div>
+<div class="loggable" logText="text">Hello</div>
+<div class="loggable" logText="text" notLoggable="true">Hello</div>
+<div loggable [logText]="expression | uppercase">Hello</div>
+
   <h2>chap10 et 11</h2>
   <p>{{ birthday | date:'dd/MM/yyyy' }}</p>
   <p>{{ birthday | fromNow }}</p>
@@ -36,6 +42,7 @@ export class PonyRacerAppComponent {
   numberOfUsers = 146;
   user: any = { name: 'Cédric' };
   birthday = new Date();
+  expression = "salut amigo";
 
  asyncGreeting = new Promise(resolve => {
    // after 1 second, the promise will resolve

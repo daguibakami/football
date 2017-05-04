@@ -1,11 +1,12 @@
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes }   from '@angular/router';
-
-import { AppComponent }  from './app.component';
-import { ActualitesComponent }  from './actualites/actualites.component';
-import { SaisonsComponent }  from './admin/saisons/saisons.component';
-import { CompetitionsComponent }  from './admin/competitions/competitions.component';
+import { RouterModule, Routes } from '@angular/router';
+import { HttpModule } from '@angular/http';
+import { AppComponent } from './app.component';
+import { ActualitesComponent } from './actualites/actualites.component';
+import { SaisonsComponent } from './saisons/saisons.component';
+import { SaisonsService } from './saisons/saisons.service';
+import { CompetitionsComponent } from './competitions/competitions.component';
 
 const appRoutes: Routes = [
   { path: '', component: ActualitesComponent },
@@ -15,11 +16,15 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports:      [ 
+  imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes) 
+    HttpModule,
+    RouterModule.forRoot(appRoutes)
   ],
-  declarations: [ AppComponent,ActualitesComponent,SaisonsComponent,CompetitionsComponent ],
-  bootstrap:    [ AppComponent ]
+  declarations: [AppComponent, ActualitesComponent, SaisonsComponent, CompetitionsComponent],
+  providers: [
+    SaisonsService
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

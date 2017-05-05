@@ -9,7 +9,9 @@ public class SaisonToAdfSaisonConverter implements Converter<Saison, AdfSaison>{
 
 	@Override
 	public AdfSaison convert(Saison saison) {
-		return new AdfSaison(saison.getLibelle());
+		AdfSaison adfSaison = new AdfSaison(saison.getLibelle());
+		adfSaison.setId(saison.getId());
+		return adfSaison; 
 	}
 	
 

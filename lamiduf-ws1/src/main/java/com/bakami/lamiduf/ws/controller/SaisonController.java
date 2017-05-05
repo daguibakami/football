@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +22,7 @@ import com.bakami.lamiduf.ws.exception.SaisonAlreadyExistException;
 import com.bakami.lamiduf.ws.repo.SaisonRepository;
 
 @RestController
+@CrossOrigin(origins ="*")
 @RequestMapping("/saison")
 public class SaisonController {
 

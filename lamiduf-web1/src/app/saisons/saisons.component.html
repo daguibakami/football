@@ -1,3 +1,37 @@
-<h3>Saisons</h3>
-<li *ngFor="let saison of saisons">{{saison.libelle}}
-</li>
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <table class="table table-bordered">
+                <tr class="active">
+                    <th>id</th>
+                    <th>saison</th>
+                </tr>
+                <tr *ngFor="let saison of saisons" [class.selected]="saison === selectedSaison" (click)="onSelect(saison)">
+                    <td>{{saison.id}}</td>
+                    <td>{{saison.libelle}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class=" col-md-5 col-md-offset-1">
+            <div *ngIf="selectedSaison">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputSaisonId" class="col-md-2 control-label">id</label>
+                        <div class="col-md-10">
+                            <input [(ngModel)]="selectedSaison.id" type="text" class="form-control" id="inputSaisonId" name="Id" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputSaisonLibelle" class="col-md-2 control-label">Saison</label>
+                        <div class="col-md-10">
+                            <input [(ngModel)]="selectedSaison.libelle" type="text" class="form-control" id="inputSaisonLibelle" name="saisonLibelle">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-default">Modifier</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

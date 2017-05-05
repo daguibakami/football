@@ -5,10 +5,13 @@ import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'my-saisons',
-  templateUrl: './saisons.component.html'
+  templateUrl: './saisons.component.html',
+  styleUrls: ['./saisons.component.css']
 })
 
 export class SaisonsComponent implements OnInit {
+
+  selectedSaison: Saison;
 
   constructor(private saisonsService: SaisonsService) {
 
@@ -25,4 +28,7 @@ export class SaisonsComponent implements OnInit {
       .then(saisons => this.saisons = saisons);
   }
 
+  onSelect(saison: Saison): void {
+    this.selectedSaison = saison;
+  }
 }

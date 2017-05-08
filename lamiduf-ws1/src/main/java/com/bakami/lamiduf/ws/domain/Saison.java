@@ -36,6 +36,12 @@ public class Saison {
 		return libelle;
 	}
 
+	
+
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+
 
 	@Override
 	public String toString() {

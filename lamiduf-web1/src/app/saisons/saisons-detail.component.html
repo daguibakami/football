@@ -1,0 +1,33 @@
+<!-- formulaire de mise à jour -->
+<div *ngIf="saison">
+    <h3>Modification d'une saison</h3>
+    <form class="form-horizontal" (ngSubmit)="updateSaison(saisonFormUpdate.value)" #saisonFormUpdate="ngForm">
+        <div class="form-group">
+            <label class="col-md-2 control-label">id</label>
+            <div class="col-md-10">
+                <input class="form-control" [(ngModel)]="saison.id" name="id" disabled>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Saison</label>
+            <div class="col-md-10">
+                <input class="form-control" name="libelle" [(ngModel)]="saison.libelle">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-default">Modifier</button>
+    </form>
+</div>
+
+<!-- formulaire de création -->
+<div *ngIf="saison == undefined">
+    <h3>Ajout d'une saison</h3>
+    <form class="form-horizontal" (ngSubmit)="addSaison(saisonFormCreate.value)" #saisonFormCreate="ngForm">
+        <div class="form-group">
+            <label class="col-md-2 control-label">Saison</label>
+            <div class="col-md-10">
+                <input class="form-control" name="libelle" ngModel>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-default">Ajouter</button>
+    </form>
+</div>

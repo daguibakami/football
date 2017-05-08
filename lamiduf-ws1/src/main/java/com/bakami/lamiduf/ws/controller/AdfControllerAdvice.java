@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.bakami.lamiduf.ws.contrat.AdfError;
 import com.bakami.lamiduf.ws.exception.SaisonAlreadyExistException;
+import com.bakami.lamiduf.ws.exception.SaisonUnknownException;
 
 @ControllerAdvice
 public class AdfControllerAdvice {
@@ -26,6 +27,12 @@ public class AdfControllerAdvice {
 	@ExceptionHandler(SaisonAlreadyExistException.class)
 	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
 	public @ResponseBody AdfError  handleSaisonAlreadyExistException(SaisonAlreadyExistException e) {
+	     return new AdfError(e.getMessage());		
+	}
+
+	@ExceptionHandler(SaisonUnknownException.class)
+	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
+	public @ResponseBody AdfError  handleSaisonUnkownExistException(SaisonAlreadyExistException e) {
 	     return new AdfError(e.getMessage());		
 	}
 

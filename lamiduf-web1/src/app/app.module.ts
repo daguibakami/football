@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ActualitesComponent } from './actualites/actualites.component';
 import { SaisonsComponent } from './saisons/saisons.component';
+import { SaisonDetailComponent } from './saisons/saison-detail.component';
 import { SaisonsService } from './saisons/saisons.service';
 import { CompetitionsComponent } from './competitions/competitions.component';
 
@@ -23,7 +24,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  declarations: [AppComponent, ActualitesComponent, SaisonsComponent, CompetitionsComponent],
+  declarations: [AppComponent, ActualitesComponent, SaisonsComponent, SaisonDetailComponent, CompetitionsComponent],
   providers: [
     SaisonsService
   ],

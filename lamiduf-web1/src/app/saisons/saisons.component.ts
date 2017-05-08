@@ -12,6 +12,8 @@ import { OnInit } from '@angular/core';
 export class SaisonsComponent implements OnInit {
 
   selectedSaison: Saison;
+  formUpdateActive: boolean = false;
+  formAddActive: boolean = false;
 
   constructor(private saisonsService: SaisonsService) {
 
@@ -30,5 +32,18 @@ export class SaisonsComponent implements OnInit {
 
   onSelect(saison: Saison): void {
     this.selectedSaison = saison;
+    this.formUpdateActive = true;
+  }
+
+  reloadSaisons(saison: Saison) {
+    this.selectedSaison = undefined;
+    this.getSaisons();
+    this.formUpdateActive = false;
+    this.formAddActive = false;
+  }
+
+  createSaison(): void {
+    this.selectedSaison = undefined;
+    this.formAddActive = true;
   }
 }

@@ -1,6 +1,6 @@
 import { Saison } from './saison';
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 
@@ -8,6 +8,7 @@ import 'rxjs/add/operator/toPromise';
 export class SaisonsService {
 
     private saisonssUrl = 'http://localhost:9000/saison';
+    private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) {
     }
@@ -16,6 +17,23 @@ export class SaisonsService {
         return this.http.get(this.saisonssUrl)
             .toPromise()
             .then(response => response.json() as Saison[])
+            .catch(this.handleError);
+    }
+
+    updateSaison(saison: Saison): Promise<Saison> {
+        const url = `${this.saisonssUrl}/${saison.id}`;
+        return this.http
+            .put(url, JSON.stringify(saison), { headers: this.headers })
+            .toPromise()
+            .then(() => saison)
+            .catch(this.handleError);
+    }
+
+    addSaison(saison: Saison): Promise<Saison> {
+        return this.http
+            .post(this.saisonssUrl, JSON.stringify(saison), { headers: this.headers })
+            .toPromise()
+            .then(() => saison)
             .catch(this.handleError);
     }
 

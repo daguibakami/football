@@ -4,3 +4,6 @@ h1 {
   font-size: 250%;
 }
 
+input.ng-invalid.ng-dirty {
+   border: 3px red solid;
+  }

@@ -5,16 +5,20 @@
                 <tr class="active">
                     <th>id</th>
                     <th>saison</th>
+                    <th>actions</th>
                 </tr>
-                <tr *ngFor="let saison of saisons" [class.selected]="saison === selectedSaison" (click)="onSelect(saison)">
+                <tr *ngFor="let saison of saisons" [class.selected]="saison === selectedSaison">
                     <td>{{saison.id}}</td>
                     <td>{{saison.libelle}}</td>
+                    <td><button class="btn btn-info btn-xs" (click)="visuSaison(saison)">Visualiser</button>
+                        <button class="btn btn-info btn-xs" (click)="updateSaison(saison)">Modifier</button>
+                        <button class="btn btn-info btn-xs" (click)="deleteSaison(saison)">Supprimer</button></td>
                 </tr>
             </table>
         </div>
-        <div *ngIf="formUpdateActive || formAddActive" class=" col-md-5 col-md-offset-1">
-            <my-saison-detail [saison]="selectedSaison" (saisonUpdated)="reloadSaisons($event)"></my-saison-detail>
+        <div *ngIf="modeVueDetail != 'none'" class=" col-md-5 col-md-offset-1">
+            <my-saison-detail [saison]="selectedSaison" [mode]="modeVueDetail" (saisonUpdated)="reloadSaisons($event)"></my-saison-detail>
         </div>
     </div>
-    <button (click)="createSaison()">Ajouter Une Saison</button>
+    <button class="btn btn-primary" (click)="createSaison()">Ajouter Une Saison</button>
 </div>

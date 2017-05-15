@@ -29,6 +29,15 @@ export class SaisonsService {
             .catch(this.handleError);
     }
 
+    deleteSaison(saison: Saison): Promise<Saison> {
+        const url = `${this.saisonssUrl}/${saison.id}`;
+        return this.http
+            .delete(url, { headers: this.headers })
+            .toPromise()
+            .then(() => null)
+            .catch(this.handleError);
+    }
+
     addSaison(saison: Saison): Promise<Saison> {
         return this.http
             .post(this.saisonssUrl, JSON.stringify(saison), { headers: this.headers })

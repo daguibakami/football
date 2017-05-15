@@ -12,8 +12,7 @@ import { OnInit } from '@angular/core';
 export class SaisonsComponent implements OnInit {
 
   selectedSaison: Saison;
-  formUpdateActive: boolean = false;
-  formAddActive: boolean = false;
+  modeVueDetail: string = "none";
 
   constructor(private saisonsService: SaisonsService) {
 
@@ -30,20 +29,30 @@ export class SaisonsComponent implements OnInit {
       .then(saisons => this.saisons = saisons);
   }
 
-  onSelect(saison: Saison): void {
+  visuSaison(saison: Saison): void {
     this.selectedSaison = saison;
-    this.formUpdateActive = true;
+    this.modeVueDetail = "visu";
   }
 
   reloadSaisons(saison: Saison) {
     this.selectedSaison = undefined;
     this.getSaisons();
-    this.formUpdateActive = false;
-    this.formAddActive = false;
+    this.modeVueDetail = "none";
   }
 
   createSaison(): void {
-    this.selectedSaison = undefined;
-    this.formAddActive = true;
+    this.selectedSaison = new Saison();
+    this.modeVueDetail = "create";
   }
+
+  updateSaison(saison: Saison): void {
+    this.selectedSaison = saison;
+    this.modeVueDetail = "update";
+  }
+
+  deleteSaison(saison: Saison): void {
+    this.selectedSaison = saison;
+    this.modeVueDetail = "delete";
+  }
+
 }

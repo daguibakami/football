@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.bakami.lamiduf.ws.contrat.AdfError;
 import com.bakami.lamiduf.ws.exception.SaisonAlreadyExistException;
 import com.bakami.lamiduf.ws.exception.SaisonUnknownException;
 
@@ -20,20 +19,20 @@ public class AdfControllerAdvice {
 
 	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(IllegalArgumentException.class)
-	public  @ResponseBody AdfError   handleIllegalArgumentException(IllegalArgumentException e) {
-	     return new AdfError(e.getMessage());		
+	public @ResponseBody String handleIllegalArgumentException(IllegalArgumentException e) {
+		return e.getMessage();
 	}
 
 	@ExceptionHandler(SaisonAlreadyExistException.class)
 	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
-	public @ResponseBody AdfError  handleSaisonAlreadyExistException(SaisonAlreadyExistException e) {
-	     return new AdfError(e.getMessage());		
+	public @ResponseBody String handleSaisonAlreadyExistException(SaisonAlreadyExistException e) {
+		return e.getMessage();
 	}
 
 	@ExceptionHandler(SaisonUnknownException.class)
 	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
-	public @ResponseBody AdfError  handleSaisonUnkownExistException(SaisonAlreadyExistException e) {
-	     return new AdfError(e.getMessage());		
+	public @ResponseBody String handleSaisonUnkownExistException(SaisonAlreadyExistException e) {
+		return e.getMessage();
 	}
 
 }

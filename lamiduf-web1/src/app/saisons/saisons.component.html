@@ -8,11 +8,11 @@
                     <th>actions</th>
                 </tr>
                 <tr *ngFor="let saison of saisons" [class.selected]="saison === selectedSaison">
-                    <td>{{saison.id}}</td>
-                    <td>{{saison.libelle}}</td>
-                    <td><button class="btn btn-info btn-xs" (click)="visuSaison(saison)">Visualiser</button>
-                        <button class="btn btn-info btn-xs" (click)="updateSaison(saison)">Modifier</button>
-                        <button class="btn btn-info btn-xs" (click)="deleteSaison(saison)">Supprimer</button></td>
+                    <td class="col-md-2">{{saison.id}}</td>
+                    <td class="col-md-6">{{saison.libelle}}</td>
+                    <td class="col-md-4"><button class="btn btn-info btn-sm" (click)="visuSaison(saison)"> <span class="glyphicon glyphicon-zoom-in" ></span></button>
+                        <button class="btn btn-info btn-sm" (click)="updateSaison(saison)"><span class="glyphicon glyphicon-pencil" ></span></button>
+                        <button class="btn btn-info btn-sm" (click)="deleteSaison(saison)"><span class="glyphicon glyphicon-trash"></span></button></td>
                 </tr>
             </table>
         </div>

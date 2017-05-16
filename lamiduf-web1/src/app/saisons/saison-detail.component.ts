@@ -12,11 +12,12 @@ export class SaisonDetailComponent {
     titre: string;
     _mode: string = '';
     afficheId: boolean = true;
+    errorServeur: string = undefined;
 
     @Input()
     set mode(value: string) {
 
-        console.log("mode=" + value);
+        this.errorServeur = undefined;
 
         this._mode = value;
         if (value == 'visu') {
@@ -46,7 +47,7 @@ export class SaisonDetailComponent {
 
 
     saveSaison(saison: Saison): void {
-
+        this.errorServeur = undefined;
         if (this._mode == 'create') {
             this.addSaison(saison);
         }
@@ -60,18 +61,30 @@ export class SaisonDetailComponent {
 
     updateSaison(saison: Saison): void {
         this.saisonsService.updateSaison(this.saison)
-            .then(() => this.saisonUpdated.emit(saison));
+            .then(() => {
+                this.saisonUpdated.emit(saison);
+                this.errorServeur = undefined;
+            })
+            .catch((error) => this.errorServeur = error);
     }
 
 
     addSaison(saison: Saison): void {
         this.saisonsService.addSaison(saison)
-            .then((saison) => this.saisonUpdated.emit(saison));
+            .then(() => {
+                this.saisonUpdated.emit(saison);
+                this.errorServeur = undefined;
+            })
+            .catch((error) => this.errorServeur = error);
     }
 
     deleteSaison(saison: Saison): void {
         this.saisonsService.deleteSaison(saison)
-            .then(() => this.saisonUpdated.emit(null));
+            .then(() => {
+                this.saisonUpdated.emit(null);
+                this.errorServeur = undefined;
+            })
+            .catch((error) => this.errorServeur = error);
     }
 
 }
